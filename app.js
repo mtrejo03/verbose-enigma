@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
-console.log(uri);
+// console.log(uri);
 
 
 
@@ -39,7 +39,34 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+//run().catch(console.dir);
+
+async function getData() {
+
+  await client.connect();
+ let collection = await client.db("guitar-app-database").collection("guitar-app-songs");
+
+
+  let results = await collection.find({}).toArray();
+   // .limit(50)
+  //  .toArray();
+
+  console.log(results);
+  return results;
+
+}
+  
+
+  app.get('/read', async function (req, res) {
+    let getDataResults = await getData();
+    console.log("in /read: ", getDataResults);
+    res.render('songs',
+    { songData : getDataResults} );
+  
+
+ // res.send(results).status(200);
+
+})
 
 
 app.get('/', function (req, res) {

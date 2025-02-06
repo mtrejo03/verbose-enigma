@@ -3,6 +3,7 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000;  
 const bodyParser = require('body-parser')
+const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
@@ -41,11 +42,29 @@ async function run() {
 }
 //run().catch(console.dir);
 
+
+
 async function getData() {
 
-  await client.connect();
- let collection = await client.db("guitar-app-database").collection("guitar-app-songs");
+ // await client.connect();
+// point to collection 
 
+app.get('/insert', async (req,res)=> { 
+
+  console.log('in /insert');
+
+ // let newSong = req.query.myName;
+
+  console.log(newSong);
+
+
+
+await client.connect();
+await client.db("guitar-app-database").collection("guitar-app-songs").insertOne({ song: newSong});
+
+res.redirect('/read');
+
+});
 
   let results = await collection.find({}).toArray();
    // .limit(50)
@@ -65,6 +84,21 @@ async function getData() {
   
 
  // res.send(results).status(200);
+
+})
+
+app.post('/delete/:id', async (req,res)=>{
+
+  console.log("in delete, req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("guitar-app-database").collection("guitar-app-songs");
+  let result = await collection.findOneAndDelete( 
+  {"_id": new ObjectId(req.params.id)}).then(result => {
+  console.log(result); 
+  res.redirect('/');})
+
+  //insert into it
 
 })
 

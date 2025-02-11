@@ -1,5 +1,6 @@
 const express = require('express')
 require('dotenv').config()
+const shajs = require('sha.js')
 const app = express()
 const port = process.env.PORT || 3000;  
 const bodyParser = require('body-parser')
@@ -16,7 +17,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'))
 
 
-//begin all my middlewarres
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -27,6 +27,8 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
+console.log(shajs('sha256').update('cat').digest('hex')); 
 
 async function run() {
   try {
@@ -46,61 +48,80 @@ async function run() {
 
 async function getData() {
 
- // await client.connect();
-// point to collection 
-
-app.get('/insert', async (req,res)=> { 
-
-  console.log('in /insert');
-
- // let newSong = req.query.myName;
-
-  console.log(newSong);
-
-
-
-await client.connect();
-await client.db("guitar-app-database").collection("guitar-app-songs").insertOne({ song: newSong});
-
-res.redirect('/read');
-
-});
-
-  let results = await collection.find({}).toArray();
-   // .limit(50)
-  //  .toArray();
-
-  console.log(results);
-  return results;
+  await client.connect(); 
+  let collection = await client.db("guitar-app-database").collection("guitar-app-songs"); 
+ 
+  let results = await collection.find({}).toArray(); 
+    
+  console.log(results); 
+  return results; 
 
 }
-  
 
-  app.get('/read', async function (req, res) {
-    let getDataResults = await getData();
-    console.log("in /read: ", getDataResults);
-    res.render('songs',
-    { songData : getDataResults} );
-  
-
- // res.send(results).status(200);
+app.get('/read', async function (req, res) {
+  let getDataResults = await getData(); 
+  console.log(getDataResults); 
+  res.render('songs', 
+    { songData : getDataResults} ); 
 
 })
+
+app.post('/insert', async (req,res)=> {
+  // app.get('/insert', async (req,res)=> {
+  
+    console.log('in /insert');
+    
+    let newSong = req.body.myName; //only for POST, GET is req.params? 
+    // let newSong = req.query.myName;
+    console.log(newSong);
+  
+    //connect to db,
+    await client.connect();
+    //point to the collection 
+    await client
+      .db("guitar-app-database")
+      .collection("guitar-app-songs")
+      .insertOne({ whatthewhatever: newSong});
+  
+    res.redirect('/read');
+  
+  }); 
+  
+app.post('/update', async (req,res)=>{
+
+  console.log("req.body: ", req.body)
+
+  client.connect; 
+  const collection = client.db("guitar-app-database")
+  .collection("guitar-app-songs");
+  let result = await collection.findOneAndUpdate( 
+  {"_id": new ObjectId(req.body.nameID)}, { $set: {"fname": req.body.inputUpdateName } }
+)
+.then(result => {
+  console.log(result); 
+  res.redirect('/read');
+})
+}); 
+
 
 app.post('/delete/:id', async (req,res)=>{
 
   console.log("in delete, req.parms.id: ", req.params.id)
 
   client.connect; 
-  const collection = client.db("guitar-app-database").collection("guitar-app-songs");
+  const collection = client.db("guitar-app-database")
+  .collection("guitar-app-songs");
   let result = await collection.findOneAndDelete( 
-  {"_id": new ObjectId(req.params.id)}).then(result => {
+    {
+      "_id": new ObjectId(req.params.id)
+    }
+  ).then(result => {
   console.log(result); 
-  res.redirect('/');})
-
-  //insert into it
+  res.redirect('/read');})
 
 })
+
+//begin all middlewares
 
 
 app.get('/', function (req, res) {
@@ -108,12 +129,6 @@ app.get('/', function (req, res) {
 
 })
 
-
-
-app.get('/nodemon', function (req, res) {
-  res.send('');
-
-})
 
 app.post('/saveMyName', (req,res)=>{
   console.log('did we hit the post endpoint?'); 
@@ -134,9 +149,10 @@ app.get('/saveMyNameGet', (req,res)=>{
 
   //console.log('req.params: ', req.params);
 
- // res.redirect('/ejs'); 
+
 
  let reqName = req.query.myNameGet;
+  // res.redirect('/ejs'); 
 
  res.render('word',
  {pageTitle: reqName});
@@ -150,11 +166,16 @@ app.get('/ejs', function (req, res) {
 })
 
 
+app.get('/nodemon', function (req, res) {
+  res.send('look ma, no kill node process then restart node then refresh browser...cool?');
+
+})
+
+
 //endpoint, middleware(s)
 app.get('/helloRender', function (req, res) {
   res.send('Hello Express from Real World<br><a href="/">back to home</a>')
 })
-
 
 
 

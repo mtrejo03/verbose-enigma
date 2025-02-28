@@ -4,65 +4,96 @@
     <meta charset="UTF-8">
     <title>Milly sobie profile </title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles/style.css">
   
 </head>
-
 <body>
     <main>
+      <!---navbar---->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">verbose-enigma</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Nu Validator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/mtrejo03/verbose-enigma" target="_blank">GitHub Source Code</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!---title-->
+    <h2>Milly's Dev Profile Page/App</h2>
+    <!----profile card-->
+    <div class="card">
+      <img src="img/profile.jpg" alt="Milly Trejo profile pic" style="width:100%">
+      <h2 class="card-title text-nowrap">Milly Trejo</h2>
+        <p>University Student</p>
+        <p>Major: Computer Information Systems</p>
+        <p>Based in: Florence, AL</p>
+
+        <p> 
+          <a href="https://github.com/mtrejo03" target="_blank">
+            <i class="fa-brands fa-github"></i>
+          </a>
+    </div>
+
+    <br>
 
 
-        <div class="row">
+   <!---    <div class="row">
             <div class="col-md-6">
                 <div class="card">
                     <h4><%= profileData[0].name%></h4>
                 </div>
             </div>
         </div>
-        <h2>Milly's profile</h2>
 
+      -->
+
+          <!------CRUD-->
+        <h3 id="club">Add a UNA club along with your major</h3>
         <form method="POST" action="insert/">
             <input name="title">
             <input name="post">
-            <button class="btn btn-primary" role="submit">new post</button>
+            <button class="btn btn-primary" role="submit">Add Major</button>
           </form>
     
           
         <% profileData.forEach(result=> { %>
             <div class="col-md-8">
-            
-      
           <form method="POST" action="update/">
             <input name="updateTitle" value="<%= result.title %>">
             <input name="updatePost" value="<%= result.post %>"> 
             <input type="hidden" name="updateId" value="<%=result._id %>">
             <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
           </form>
-          
-      
       
           <form method="POST" action="delete/">
             <input type="hidden" name="deleteId" value="<%=result._id %>">
             <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
           </form>
-      
-      
         </div>
           <% }); %>
+        <br>
 
     </main>
-    <footer class="footer bg-body-tertiary text-center text-lg-start fixed-bottom">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2024
-          <a class="text-body" href="https://mdbootstrap.com/">bc</a> |
-          <a href="https://gist.github.com/assets/22795694/d414efab-a80c-4b31-aeac-9636a0681f41" target="_blank">see my wireframe</a>
-          <!-- Copyright -->
-        </div>
+
+    <!---footer-->
+    <footer class="text-center mt-5">
+      <p>&copy; 2024 Milly Trejo | <a href="https://github.com/mtrejo03" target="_blank">GitHub</a></p>
+
+
       </footer>
       
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script  src="scripts/script.js"></script>
+        <script src="scripts/data.js"></script>
 </body>

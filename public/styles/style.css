@@ -14,8 +14,8 @@ h2 {
 }
 
 .card p {
-  text-align: center; 
-  margin: 5px 0; 
+  text-align: center;
+  margin: 5px 0;
   padding: 0;
 }
 
@@ -27,34 +27,79 @@ h2 {
 }
 
 .card img {
-  width: 250px; 
-  height: 250px; 
-  border-radius: 50%; 
-  object-fit: cover; 
-  margin: 0 auto; 
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
 }
 
 .card p a {
   text-decoration: none;
-  color: #333; 
-  font-size: 18px; 
+  color: #333;
+  font-size: 18px;
 }
 
 .card p a:hover {
-  color: #6e5494; 
+  color: #6e5494;
 }
 
 .card p i {
   font-size: 35px;
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 
-li {
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: 400;
-  font-style: normal;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+  flex-wrap: wrap;
 }
 
-/* use # to prefix css selector for dom/html element id attribute */
-#songList {
-  background-color: #CE93D8;}
+
+.about-box {
+  flex: 1;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+}
+
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+
+.form-container input {
+  padding: 8px;
+  margin: 5px 0;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+.form-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+
+.form-container h3 {
+  margin-bottom: 15px;
+}

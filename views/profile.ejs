@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Milly sobie profile </title>
+  <title>Portfolio </title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles/style.css">
@@ -13,15 +13,14 @@
 <body>
   <main>
     <!---navbar---->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">verbose-enigma</a>
+        <a class="navbar-brand" href="#">Milly Trejo's Portfolio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#">Nu Validator</a></li>
             <li class="nav-item"><a class="nav-link" href="https://github.com/mtrejo03/verbose-enigma"
                 target="_blank">GitHub Source Code</a></li>
           </ul>
@@ -30,49 +29,95 @@
     </nav>
 
     <!---title-->
-    <h2>Milly's Dev Profile Page/App</h2>
-    <div class="container">
-      <div class="card">
-        <img src="img/profile.jpg" alt="Milly Trejo profile pic" style="width:100%">
-        <h2 class="card-title text-nowrap">Milly Trejo</h2>
-        <p>University Student</p>
-        <p>Major: Computer Information Systems</p>
-        <p>Based in: Florence, AL</p>
-
-        <p>
-          <a href="https://github.com/mtrejo03" target="_blank">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </p>
+    <div class="container about-section">
+      <div class="profile-image-container">
+        <img src="img/profile.jpg" alt="Milly Trejo profile pic" class="profile-image">
       </div>
 
       <br>
+  
 
       <div class="about-box">
-        <h1>Meet The Developer</h1>
-        <p>Hello! I am Milly Trejo, a senior at the University of North Alabama studying Computer
-          Information Systems. I plan to graduate May of 2025 and seek employment in both the business
-          and technology industries. </p>
-        <h3>Hobbies</h3>
-        <p>When I am not studying I can usually be found creating. This includes video creation such
-          as filming and editing youtube videos or editing in Photoshop for various passion projects.
-          I also code for side projects and learn more skills via online bootcamps or by watching online
-          training videos. </p>
+        <h1>About me</h1>
+        <p>Hello! I am Milly Trejo, a recent graduate from the University of North Alabama with a BBA
+          in Computer Information Systems. Throughout my studies, 
+          I’ve combined business knowledge with technical skills, equipping me with a unique blend of 
+          problem-solving abilities and strategic thinking. At UNA, I developed hands-on experience in 
+          programming, databases, systems analysis, and full-stack development. I am passionate about technology
+          and am eager to grow in a role where I can contribute to innovative projects and continue learning.
+        </p>
         <h3>Skills</h3>
         <ul>
-          <li> Programming: Python, Java</li>
+          <li> Languages: Python, Java, PHP, HTML, CSS</li>
           <li> Database: MySQL</li>
-          <li> Software: Adobe Photoshop, GitHub, Visual Studio Code</li>
-          <li> Office Tools: Microsoft Word, Excel, PowerPoint</li>
-
+          <li> Software: Adobe Photoshop, CapCut, GitHub, Visual Studio Code</li>
+          <li> Office Tools: Microsoft Word, Excel, PowerPoint, Outlook</li>
         </ul>
+
+     <div class="social-icons">
+      <a href="https://github.com/mtrejo03" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/milly-trejo-3638b42a8/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      </div>       
       </div>
     </div>
     <br>
 
+  <section class="projects">
+<section class="projects">
+  <h1>Projects</h1>
+  <div class="cards-container">
+   
+    <div class="card">
+      <img class="card-img-top" src="img/emoji.jpg" alt="Emoji Game">
+      <div class="card-body">
+        <h4 class="card-title">The Emoji Game</h4>
+        <p class="card-text">A fun matching game using HTML, CSS, and JavaScript</p>
+        <div class="card-buttons">
+          <a href="https://github.com/mtrejo03/dev-david-hw" class="btn" target="_blank">
+            <i class="bi bi-github"></i> Source Code</a>
+          <a href="https://mtrejo03.github.io/dev-david-hw/" class="btn" target="_blank">Play it</a>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="card">
+      <img class="card-img-top" src="img/book.jpg" alt="Book Project">
+      <div class="card-body">
+        <h4 class="card-title">Book Tracker</h4>
+        <p class="card-text">An easy form to track books built with HMTL, CSS, and JavaScript</p>
+        <div class="card-buttons">
+          <a href="https://github.com/mtrejo03/dev-harry-final-project" class="btn" target="_blank">
+            <i class="bi bi-github"></i> Source Code</a>
+          <a href="https://mtrejo03.github.io/dev-harry-final-project/" class="btn" target="_blank">See it</a>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="card">
+      <img class="card-img-top" src="img/newsletter.jpg" alt="Newsletter">
+      <div class="card-body">
+        <h4 class="card-title">Newsletter</h4>
+        <p class="card-text">A  prototype of a subscription newsletter built using HTML, CSS, and JavaScript</p>
+        <div class="card-buttons">
+          <a href="https://github.com/AnnaShannon2002/sobie-subscribe-list" class="btn" target="_blank">
+            <i class="bi bi-github"></i> Source Code</a>
+          <a href="https://annashannon2002.github.io/sobie-subscribe-list/index.html" class="btn" target="_blank">See it</a>
+        </div>
+      </div>
+    </div>
+  </div> 
+</section>
+
+</section>
     <div class="form-container">
-      <h3 id="major">Add your major and a skill </h3>
-      <p>This is a place where you can leave your major & a cool skill you have!</p>
+      <h3 id="major">Add your name and a skill </h3>
+      <p>This is a place where you can sign this portfolio with your name & a skill you have!</p>
       <form method="POST" action="insert/">
         <input name="title">
         <input name="post">
